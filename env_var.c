@@ -9,7 +9,7 @@ char *get_env_list(char *env, flag_info_t *info)
 	int i;
 	environment_t *new_node;
 
-	new_node = malloc (sizeof(environment_t));
+	new_node = malloc(sizeof(environment_t));
 	if (new_node == NULL)
 	{
 		perror("could not allocate new node");
@@ -21,26 +21,16 @@ char *get_env_list(char *env, flag_info_t *info)
 		return (NULL);
 	}
 
-	*new_node = info->env_head;
-	while(new_node != NULL)
-	{
-		for (i = 0 ; env[i] != '\0' ; i++)
-			{
-				if (new_node->s[i] != env[i])
-				{
-					break;
-				}
-			}
-		new_node = new_node->next;
-	}	
-
-	for (i = 0 ; new_node != NULL ; i++)
-	{
-		printf("%s\n", new_node->s);
-		new_node = new_node->next;
-	}
-
-	
-
-	return (&(new_node->s[i+1]));
+	for (i = 0; &env[i] != NULL; i++)
+		{
+			new_node->s = _strdup(&env[i]);
+			new_node->next = new_node;
+		}
+	for (i = 0; new_node != NULL; i++)
+		{
+			printf("%s\n", new_node->s);
+			new_node = new_node->next;
+		}
+	return (new_node->s);
 }
+
