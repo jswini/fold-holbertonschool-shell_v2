@@ -16,15 +16,36 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, int n);
 
 /**
- * struct env_path - singly linked list of path env var
- *
- * @file_path: path to directory
- * @next: pointer to next node
+ * @brief 
+ * 
  */
-typedef struct env_path
+typedef struct environment_s
 {
-	char *file_path;
-	struct env_path *next;
-} env_path_t;
+	char *s;
+	struct environment_s *next;
+
+} environment_t;
+
+/**
+ * struct flag_info - struct to store environment info
+ * @env: environment variables at program start
+ * @toexit: flag for exit
+ * @env_head: the head of a linked list of current env variables
+ * @prog_name: name of the program
+ * @prog_status: the exit code of the last program executed
+ * @line_number: tracks number of executed lines
+ */
+typedef struct flag_info
+{
+	char **env;
+	int toexit;
+	environment_t env_head;
+	char *prog_name;
+	int prog_status;
+	int line_number;
+
+} flag_info_t;
+
+char *get_env_list(char *env, flag_info_t *info);
 
 #endif /*HSH_H*/

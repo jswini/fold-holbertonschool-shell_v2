@@ -5,14 +5,13 @@
  *
  * @argc: number of command line arguments
  * @argv: array of command line arguments
+ * @env: user environment at program start 
  * Return: 0
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[], char **env)
 {
-	env_path_t *path = NULL;
-	int i;
-	char *dup_path = NULL;
-	char *path_token;
-	char delims[] = {':', '=', '\n'};
+	flag_info_t *flag_info = NULL;
+
+	
 }
