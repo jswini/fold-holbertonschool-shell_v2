@@ -39,13 +39,15 @@ typedef struct flag_info
 {
 	char **env;
 	int toexit;
-	environment_t env_head;
+	environment_t *env_head;
 	char *prog_name;
 	int prog_status;
 	int line_number;
 
 } flag_info_t;
 
-char *get_env_list(char *env, flag_info_t *info);
+environment_t *create_env_list(char **env, flag_info_t *info);
+void print_env(flag_info_t *info);
+environment_t *add_node_end(environment_t **head, const char *str);
 
 #endif /*HSH_H*/
