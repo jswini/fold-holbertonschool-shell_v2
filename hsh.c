@@ -11,7 +11,21 @@
 
 int main(int argc, char *argv[], char **env)
 {
-	flag_info_t *flag_info = NULL;
+	//flag_info_t *flag_info = NULL;
+	int interactive = isatty(STDIN_FILENO);
+	size_t bytes;
+	char *buffer;
 
-	
+	if (interactive)
+	{
+		while (1)
+		{
+			write(1, "$> ", 3);
+			if (getline (&buffer, &bytes, stdin) == EOF)
+			{
+				break;
+			}
+			printf("%s\n", buffer);
+		}
+	}
 }
