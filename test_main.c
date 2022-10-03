@@ -14,6 +14,7 @@ int main(int argc, char **argv, char **env)
 	info = malloc(sizeof(flag_info_t));
 	info->toexit = 0;
 	info->line_number = 0;
+	info->env_head = NULL;
 	create_env_list(env, info);
 	print_env(info);
 	free(info);

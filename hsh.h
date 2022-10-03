@@ -9,45 +9,27 @@
 #include <errno.h>
 #include <string.h>
 
-int _strlen(char *s);
-char *_strcat(char *s1, char *s2);
-char *_strdup(const char *str);
-int _strcmp(char *s1, char *s2);
-int _strncmp(char *s1, char *s2, int n);
-
 /**
  * @brief 
  * 
  */
 typedef struct environment_s
 {
-	char *s;
+	char *key;
+	char *value;
 	struct environment_s *next;
+	struct environment_s *prev;
 
 } environment_t;
 
-/**
- * struct flag_info - struct to store environment info
- * @env: environment variables at program start
- * @toexit: flag for exit
- * @env_head: the head of a linked list of current env variables
- * @prog_name: name of the program
- * @prog_status: the exit code of the last program executed
- * @line_number: tracks number of executed lines
- */
-typedef struct flag_info
-{
-	char **env;
-	int toexit;
-	environment_t *env_head;
-	char *prog_name;
-	int prog_status;
-	int line_number;
+/*string parse functions*/
+int _strlen(char *s);
+char *_strcat(char *s1, char *s2);
+char *_strdup(const char *str);
+int _strcmp(char *s1, char *s2);
+int _strncmp(char *s1, char *s2, int n);
 
-} flag_info_t;
 
-environment_t *create_env_list(char **env, flag_info_t *info);
-void print_env(flag_info_t *info);
-environment_t *add_node_end(environment_t **head, const char *str);
+add_node_end_env_t(environment_t **head, char *env_line);
 
 #endif /*HSH_H*/
