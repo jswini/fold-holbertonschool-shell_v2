@@ -13,10 +13,11 @@ int main(int argc, char *argv[], char **env)
 {
 
 	int interactive = isatty(STDIN_FILENO);
-	size_t bytes;
+	size_t bytes = 0;
 	char *buffer;
-	char *tokenized;
+	char **tokenized;
 	int i;
+	int status;
 
 
 	if (interactive)
@@ -29,7 +30,14 @@ int main(int argc, char *argv[], char **env)
 			
 			printf("%s\n", buffer);
 			tokenized = tokenizer(buffer);
+			/*status = check_built_ins(tokenized)
+			  if (status < 0)
+			  {
+				perror("error executing command or built in, please try again");
+			  }
+			*/
 
-		}
+			}
 	}
+	return (0);
 }
