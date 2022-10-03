@@ -24,7 +24,7 @@ typedef struct environment_s
 
 void prompt(void);
 
-char *tokenizer(char* buffer);
+char **tokenizer(char* buffer);
 
 /*string parse functions*/
 int _strlen(char *s);
