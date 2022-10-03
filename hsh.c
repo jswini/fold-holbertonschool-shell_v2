@@ -15,17 +15,21 @@ int main(int argc, char *argv[], char **env)
 	int interactive = isatty(STDIN_FILENO);
 	size_t bytes;
 	char *buffer;
+	char *tokenized;
+	int i;
+
 
 	if (interactive)
 	{
 		while (1)
 		{
-			write(1, "$> ", 3);
+			prompt();
 			if (getline (&buffer, &bytes, stdin) == EOF)
-			{
 				break;
-			}
+			
 			printf("%s\n", buffer);
+			tokenized = tokenizer(buffer);
+
 		}
 	}
 }
