@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[], char **env)
 {
-	//flag_info_t *flag_info = NULL;
+
 	int interactive = isatty(STDIN_FILENO);
 	size_t bytes;
 	char *buffer;
