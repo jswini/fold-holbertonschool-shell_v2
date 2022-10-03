@@ -7,7 +7,7 @@
  * @return char* 
  */
 
-char *_strdup(const char *str, size_t size)
+char *_strndup(const char *str, size_t size)
 {
 	int i;
 	char *ptr;

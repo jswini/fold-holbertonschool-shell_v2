@@ -1,20 +1,22 @@
 #include "hsh.h"
 
 /**
- * @brief 
- * 
+ * add_node_end_env_t - adds a node to the end of a dbl linked list 
+ * @head: the head of the linked list
+ * @env_line: single line of data from env variables
+ * Return: address of the head node of the linked list
  */
 
-add_node_end_env_t(environment_t **head, char *env_line)
+env_t *add_node_end_env_t(env_t **head, char *env_line)
 {
-	environment_t *this_node = *head;
-	environment_t *new_node = NULL;
+	env_t *this_node = *head;
+	env_t *new_node = NULL;
 
-	new_node = malloc(sizeof(environment_t));
+	new_node = malloc(sizeof(env_t));
 	if (new_node == NULL)
 	{
 		perror("node not created: ");
-		return(NULL);
+		return (new_node);
 	}	
 	new_node->key = get_key(env_line);
 	new_node->value = get_value(env_line);
@@ -34,5 +36,5 @@ add_node_end_env_t(environment_t **head, char *env_line)
 	}
 	this_node->next = new_node;
 	new_node->prev = this_node;
-	return(*head);
+	return (*head);
 }
