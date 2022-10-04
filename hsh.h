@@ -10,8 +10,11 @@
 #include <string.h>
 
 /**
- * @brief 
- * 
+ * struct environment_s - holds key value pairs for env list
+ * @key: key value for env list
+ * @value: value of env list
+ * @next: pointer to the next node
+ * @prev: pointer to the prev node
  */
 typedef struct environment_s
 {
@@ -24,7 +27,7 @@ typedef struct environment_s
 
 void prompt(void);
 
-char **tokenizer(char* buffer);
+char **tokenizer(char *buffer);
 
 /*string parse functions*/
 int _strlen(char *s);

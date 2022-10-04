@@ -3,9 +3,9 @@
 /**
  * tokenizer - creates a token from input
  * @buffer: buffer from getchar
- * return: our tokenized inputs
+ * Return: our tokenized inputs
  */
-char **tokenizer(char* buffer)
+char **tokenizer(char *buffer)
 {
 	char delimiter[] = {' ', '\n', '&', '|', '<', '>', ';'};
 	char *tok;
@@ -27,8 +27,8 @@ char **tokenizer(char* buffer)
 	}
 
 	for (i = 0; token_array[i] != NULL; i++)
-		{
-			printf("%s\n", token_array[i]);
-		}
+	{
+		printf("%s\n", token_array[i]);
+	}
 	return (token_array);
 }

@@ -1,19 +1,20 @@
 #include "hsh.h"
-
 /**
- * @brief 
- * 
+ * get_key - gets key value from env
+ * @str: string of env variables
+ * Return: the key value
  */
 
 char *get_key(char *str)
 {
-	char *return_value;
+	char *retVal;
 	int i = 0;
-	
+
 	while (str[i] != '=' && str[i] != '\n')
 	{
 		i++;
 	}
-	return_value = _strndup(str, i);
-	return (return_value);
+	retVal = _strndup(str, i);
+
+	return (retVal);
 }

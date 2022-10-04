@@ -1,8 +1,8 @@
 #include "hsh.h"
 
 /**
- * prompt - writes our pronpt
- * 
+ * prompt - displays the characters for shell lines
+ * Return: is void
  */
 void prompt(void)
 {

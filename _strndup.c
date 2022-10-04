@@ -1,10 +1,9 @@
 #include "hsh.h"
 /**
- * @brief 
- * 
- * @param str 
- * @param size 
- * @return char* 
+ * _strndup - duplicates a string
+ * @str: string for duplication
+ * @size: size of string for duplication
+ * Return: pointer to the duplicated string
  */
 
 char *_strndup(const char *str, size_t size)
