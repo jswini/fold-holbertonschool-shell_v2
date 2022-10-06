@@ -25,13 +25,6 @@ typedef struct environment_s
 
 } env_t;
 
-typedef struct builtin_s
-{
-	char *name;
-	int (*func)(int argc, char **argv);
-} built_in_t;
-
-
 void prompt(void);
 
 
@@ -50,11 +43,11 @@ env_t *add_node_end_env_t(env_t **head, char *env_line);
 void build_env_array(env_t *head);
 
 /*built in functions*/
-int bi_exit();
-int bi_chdir();
-int bi_set_env();
-int bi_unset_env();
-int print_env(char **list, int oi);
+char *bi_exit(env_t *head);
+char *bi_chdir(env_t *head, char *value, char *path);
+char *bi_set_env(env_t *head, char *key, char *value);
+char *bi_unset_env(env_t *head, char *key);
+void print_env(char **list, int oi);
 
 /*separator/operator functions*/
 char **tokenizer(char *buffer);

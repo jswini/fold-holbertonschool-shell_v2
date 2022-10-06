@@ -19,3 +19,4 @@ char *find_path(char **output_list)
 	}
 	return (path);
 }
+/*set to linked list to verify before use*/

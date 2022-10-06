@@ -5,28 +5,32 @@
  * Return: is the status of the presence of a builtin bash command
  */
 
-int (*check_built_ins(char *name, char **argv))
+char check_built_ins(char *line, env_t *head)
 {
 	int status;
-	int i;
+	char *name;
 
-	built_in_t bi[] = {
-		{"exit", &bi_exit},
-		{"cd", &bi_chdir},
-		{"setenv", &bi_set_env},
-		{"unsetenv", bi_unset_env},
-		{"env", print_env},
-		{NULL, NULL}
-	};
-
-	if (name == NULL)
-		return (NULL);
-
-	for (i = 0; bi[i].name != NULL; i++)
-		if (_strcmp(bi[i].name, name) != 0)
-		{
-			return (bi[i].func);
-		}
+	name = line[0];
+	if (name == "setenv")
+	{
+		status = bi_set_env(head, line[1], line[2]);
+		return (status);
+	}
+	else if (name == "unsetenv")
+	{
+		status = bi_unset_env(head, line[1]);
+		return (status);
+	}
+	else if (name == "cd")
+	{
+		status = bi_chdir(head, line[1]);
+		return (status);
+	}
 	
-	return (status);  /** returns to hsh.c */
+	else if (name == "exit")
+	{
+		bi_exit(head);
+	}
+	else
+		return (status);  /** returns to hsh.c */
 }

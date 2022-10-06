@@ -1,17 +1,21 @@
 #include "hsh.h"
 
-void parse_args(char **tokenized)
+char *parse_args(char **tokenized, env_t *head, char *path)
 {
 	int i;
 	char *line;
 	int line_len;
+	char *status;
 
 	line_len= strlen(line);
 	if (line[line_len] + 1 == '\n')
 	{
-		check_built_ins(line[0], line);
+		status = check_built_ins(line, head, path);
+		return (status);
 	}
-
+	return (line);
+}
+	
 	/*
 	1) build statement from line - done in tokenizer
 	2)		check separators

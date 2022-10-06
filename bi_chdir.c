@@ -1,8 +1,11 @@
 #include "hsh.h"
 
-int bi_chdir()
+char *bi_chdir(env_t *head, char *value, char *path)
 {
-	bi_set_env();
-	bi_unset_env();
-	return (1);
+	char *oldpwd_val = get_pwd(*head);
+
+	if (/*strcmp path to value*/)
+	bi_set_env(head, "OLDPWD", oldpwd_val);
+	bi_set_env(head, "PWD", value);
+	return ("Success");
 }

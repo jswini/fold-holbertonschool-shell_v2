@@ -1,6 +1,7 @@
 #include "hsh.h"
 
-int bi_exit()
+char *bi_exit(env_t *head)
 {
-	exit(1);
+	free_list(*head);
+	exit(EXIT_SUCCESS);
 }
