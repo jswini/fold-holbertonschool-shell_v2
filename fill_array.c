@@ -1,5 +1,12 @@
 #include "hsh.h"
 
+/**
+ * fill_env_array - fills an array with the env
+ * @head: head of the env linked list
+ * @outputList: array containing the new env varialbles
+ * Return: is void
+ */
+
 void fill_env_array(env_t *head, char **outputList)
 {
 	int i = 0;
@@ -18,5 +25,5 @@ void fill_env_array(env_t *head, char **outputList)
 		strcpy(&outputList[i][keysize + 1], head->value);
 		/* printf("filling with %s\n", outputList[i]); */
 	}
-	
+
 }

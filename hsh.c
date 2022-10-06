@@ -19,7 +19,7 @@ int main(int argc, char *argv[], char **env)
 	int i;
 	int status;
 	env_t *head = NULL;
-	
+
 	while (env[i] != NULL)
 	{
 		add_node_end_env_t(&head, env[i]);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[], char **env)
 			*	perror("error executing command or built in, please try again");
 			*  }
 			*  else
-			*  		find_command
+			*  find_command
 			*/
 
 			}

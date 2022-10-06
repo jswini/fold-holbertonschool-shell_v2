@@ -1,11 +1,13 @@
 #include "hsh.h"
 /**
  * check_built_ins - checks the input for built-in bash commands
- * @tokenized: double pointer to the output of getline()
+ * @line: array from getline
+ * @path_head: the head of the PATH env variable
+ * @head: the head of the env linked list
  * Return: is the status of the presence of a builtin bash command
  */
 
-char check_built_ins(char *line, env_t *head)
+char check_built_ins(char *line, path_t *path_head, env_t *head)
 {
 	int status;
 	char *name;
@@ -26,7 +28,7 @@ char check_built_ins(char *line, env_t *head)
 		status = bi_chdir(head, line[1]);
 		return (status);
 	}
-	
+
 	else if (name == "exit")
 	{
 		bi_exit(head);
