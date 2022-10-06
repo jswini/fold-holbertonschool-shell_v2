@@ -25,9 +25,15 @@ typedef struct environment_s
 
 } env_t;
 
+typedef struct builtin_s
+{
+	char *name;
+	int (*func)(int argc, char **argv);
+} built_in_t;
+
+
 void prompt(void);
 
-char **tokenizer(char *buffer);
 
 /*string parse functions*/
 int _strlen(char *s);
@@ -37,8 +43,23 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, int n);
 char *_strndup(const char *str, size_t size);
 
+/*env list functions*/
 char *get_key(char *str);
 char *get_value(char *str);
 env_t *add_node_end_env_t(env_t **head, char *env_line);
+void build_env_array(env_t *head);
+
+/*built in functions*/
+int bi_exit();
+int bi_chdir();
+int bi_set_env();
+int bi_unset_env();
+int print_env(char **list, int oi);
+
+/*separator/operator functions*/
+char **tokenizer(char *buffer);
+
+/*execution functions*/
+void find_command(char **tokenized, env_t *head);
 
 #endif /*HSH_H*/
