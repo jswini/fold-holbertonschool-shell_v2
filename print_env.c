@@ -1,6 +1,6 @@
 #include "hsh.h"
 
-int print_env(char **list, int oi)
+void print_env(char **list, int oi)
 {
 	{
 	int i = 0;
