@@ -1,4 +1,9 @@
 #include "hsh.h"
+/**
+ * find_path - finds the PATH in the env
+ * @output_list: an array of strings of the env variables
+ * Return: the PATH
+ */
 
 char *find_path(char **output_list)
 {
@@ -14,7 +19,7 @@ char *find_path(char **output_list)
 		else
 		{
 			perror("can't find path var");
-			return("failed");
+			return ("failed");
 		}
 	}
 	return (path);

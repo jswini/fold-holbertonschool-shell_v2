@@ -8,6 +8,20 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
+/**
+ * struct pathlist_s - struct for putting PATH into a linked list
+ * @file_path: the PATH
+ * @next: pointer to next node
+ */
+typedef struct pathlist_s
+{
+	char *file_path;
+	struct pathlist_s *next;
+} path_t;
+
 
 /**
  * struct environment_s - holds key value pairs for env list
@@ -22,11 +36,7 @@ typedef struct environment_s
 	char *value;
 	struct environment_s *next;
 	struct environment_s *prev;
-
 } env_t;
-
-void prompt(void);
-
 
 /*string parse functions*/
 int _strlen(char *s);
@@ -44,15 +54,18 @@ void build_env_array(env_t *head);
 
 /*built in functions*/
 char *bi_exit(env_t *head);
-char *bi_chdir(env_t *head, char *value, char *path);
+char *bi_chdir(env_t *head, char *value);
 char *bi_set_env(env_t *head, char *key, char *value);
 char *bi_unset_env(env_t *head, char *key);
 void print_env(char **list, int oi);
 
 /*separator/operator functions*/
+char check_built_ins(char *line, path_t *path_head, env_t *head);
 char **tokenizer(char *buffer);
+char *parse_args(char **tokenized, path_t *path_head, env_t *head);
 
 /*execution functions*/
+void prompt(void);
 void find_command(char **tokenized, env_t *head);
 
 #endif /*HSH_H*/

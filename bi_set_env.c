@@ -1,8 +1,16 @@
 #include "hsh.h"
 
+/**
+ * bi_set_env - sets the env variables
+ * @head: head of the env list
+ * @key: the key of the key val pair linked list of the env
+ * @value: the value of the key val pair of the env
+ * Return: char*
+ */
+
 char *bi_set_env(env_t *head, char *key, char *value)
 {
-	int i; 
+	int i;
 	int len;
 	env_t *current;
 
@@ -12,7 +20,7 @@ char *bi_set_env(env_t *head, char *key, char *value)
 	current = head;
 	while (current != NULL)
 	{
-	if (_strcmp(current->key, key))
+		if (_strcmp(current->key, key))
 			current->value = value;
 		else
 		{
