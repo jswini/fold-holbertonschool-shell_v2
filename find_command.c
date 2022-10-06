@@ -6,7 +6,7 @@
  * Return: is void
  */
 
-void find_command(char **tokenized, env_t *head)
+char *find_command(char **tokenized, env_t *head)
 {
 	int status, i;
 	char **output_list;

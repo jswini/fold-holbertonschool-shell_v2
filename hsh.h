@@ -66,6 +66,6 @@ char *parse_args(char **tokenized, path_t *path_head, env_t *head);
 
 /*execution functions*/
 void prompt(void);
-void find_command(char **tokenized, env_t *head);
+char *find_command(char **tokenized, env_t *head);
 
 #endif /*HSH_H*/

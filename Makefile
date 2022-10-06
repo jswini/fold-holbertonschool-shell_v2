@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic -g
-SRC = *.c
+SRC = ${*.c}
 OBJ = $(SRC:.c=.o)
 NAME = hsh
 RM = rm -f
