@@ -5,33 +5,28 @@
  * Return: is the status of the presence of a builtin bash command
  */
 
-int check_built_ins(char **tokenized)
+int (*check_built_ins(char *name, char **argv))
 {
 	int status;
+	int i;
 
-	if (_strcmp(tokenized[0], "exit") == 0)
-	{
-		shell_exit();
-	}
-	else if (_strcmp(tokenized[0], "cd") == 0)
-	{
-		change_dir();
-	}
-	else if (_strcmp(tokenized[0], "setenv") == 0)
-	{
-		set_env();
-	}
-	else if (_strcmp(tokenized[0], "unsetenv") == 0)
-	{
-		unset_env();
-	}
-	else if (_strcmp(tokenized[0], "env") == 0)
-	{
-		print_env();
-	}
-	else
-	{
-		find_command();
-	}
+	built_in_t bi[] = {
+		{"exit", &bi_exit},
+		{"cd", &bi_chdir},
+		{"setenv", &bi_set_env},
+		{"unsetenv", bi_unset_env},
+		{"env", print_env},
+		{NULL, NULL}
+	};
+
+	if (name == NULL)
+		return (NULL);
+
+	for (i = 0; bi[i].name != NULL; i++)
+		if (_strcmp(bi[i].name, name) != 0)
+		{
+			return (bi[i].func);
+		}
+	
 	return (status);  /** returns to hsh.c */
 }

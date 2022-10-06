@@ -7,7 +7,7 @@
  */
 char **tokenizer(char *buffer)
 {
-	char delimiter[] = {' ', '\n', '&', '|', '<', '>', ';'};
+	char delimiter[] = {' ', '\n'};
 	char *tok;
 	char **token_array = NULL;
 	int i;

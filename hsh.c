@@ -18,7 +18,13 @@ int main(int argc, char *argv[], char **env)
 	char **tokenized;
 	int i;
 	int status;
-
+	env_t *head = NULL;
+	
+	while (env[i] != NULL)
+	{
+		add_node_end_env_t(&head, env[i]);
+		i++;
+	}
 
 	if (interactive)
 	{
@@ -30,12 +36,15 @@ int main(int argc, char *argv[], char **env)
 
 			printf("%s\n", buffer);
 			tokenized = tokenizer(buffer);
+			find_command(*tokenized, head);
 			/*
 			*status = check_built_ins(tokenized)
 			*  if (status < 0)
 			*  {
 			*	perror("error executing command or built in, please try again");
 			*  }
+			*  else
+			*  		find_command
 			*/
 
 			}
