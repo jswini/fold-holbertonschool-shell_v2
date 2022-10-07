@@ -2,8 +2,8 @@
 
 /**
  * bi_exit - exits the shell
- * @head: the head of the env list 
- * Return Success on success
+ * @head: the head of the env list
+ * Return: Success on success
  */
 
 char *bi_exit(env_t *head)
