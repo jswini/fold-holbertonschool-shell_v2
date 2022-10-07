@@ -43,13 +43,10 @@ int main(int argc, char *argv[], char **env)
 			/*
 			*status = check_built_ins(tokenized)
 			*  if (status < 0)
-			*  {
 			*	perror("error executing command or built in, please try again");
-			*  }
 			*  else
 			*  find_command
 			*/
-
 			}
 	}
 	return (0);
