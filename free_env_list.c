@@ -3,7 +3,7 @@
 /**
  * free_env_list - frees the env linked list
  * @head: head of the env linked list
- * Return: is void 
+ * Return: is void
  */
 
 void free_env_list(env_t **head)
