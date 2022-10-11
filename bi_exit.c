@@ -8,13 +8,11 @@
  * Return: Success on success
  */
 
-char *bi_exit(env_t *builtin, char *var1, char *var2)
+char *bi_exit(char **line, path_t *path, env_t *head)
 {
-	(void)(var1);
-	(void)(var2);
-	env_t *head = builtin;
-
+	(void)(**line);
 	free_env_list(&head);
+	free_path_list(&path);
 	exit(EXIT_SUCCESS);
 
 	return ("Success");

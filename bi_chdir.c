@@ -7,11 +7,12 @@
  * @var2: void
  * Return: Success on success failure on fail
  */
-char *bi_chdir(env_t *head, char *value, char *var2)
+char *bi_chdir(char *line, path_t *path, env_t *head)
 {
 	struct stat sb;
 	char *oldpwd_val = get_pwd(head);
-	(void)(var2);
+	char *value = line;
+	(void)(path);
 
 	if (lstat(value, &sb) == -1)
 		return ("failure");

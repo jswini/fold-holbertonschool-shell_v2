@@ -1,7 +1,7 @@
 #include "hsh.h"
 
 /**
- * remove_node - removed a node from a linked list
+ * delete_env_node - removed a node from a linked list
  * @head: the head of the env linked list
  * @value: the value of the key/val pair of the env linked list
  * Return: is void
