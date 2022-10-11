@@ -15,7 +15,7 @@ char *parse_args(char **tokenized, path_t *path_head, env_t *head)
 	int line_len;
 	char *status;
 
-	line_len = strlen(line);
+	line_len = _strlen(line);
 	if (line[line_len] + 1 == '\n')
 	{
 		status = check_built_ins(line, path_head, head);

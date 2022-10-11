@@ -7,32 +7,31 @@
  * Return: is the status of the presence of a builtin bash command
  */
 
-char check_built_ins(char *line, path_t *path_head, env_t *head)
+int (*check_built_ins(char *line))(path_t *path_head, env_t *head)
 {
-	int status;
-	char *name;
+/* 	(void)(path_head);
+	(void)(head); */
+	builtin_t built_in_chooser[] = {
+		{"exit", &bi_exit},
+		{"cd", &bi_chdir},
+		{"setenv", &bi_set_env},
+		{"unsetenv", &bi_unset_env},
+		{NULL, NULL}
+	};
+	int i;
 
-	name = line[0];
-	if (name == "setenv")
+	/* if (line == NULL)
 	{
-		status = bi_set_env(head, line[1], line[2]);
-		return (status);
-	}
-	else if (name == "unsetenv")
-	{
-		status = bi_unset_env(head, line[1]);
-		return (status);
-	}
-	else if (name == "cd")
-	{
-		status = bi_chdir(head, line[1]);
-		return (status);
+		perror("failed to get command");
+		return (-1);
 	}
 
-	else if (name == "exit")
+	if (_strcmp(line, "env") == 1)
+		return (3); */
+
+	for (i = 0; built_in_chooser[i].builtin_name != NULL; i++)
 	{
-		bi_exit(head);
+		if (_strcmp(built_in_chooser[i].builtin_name, line))
+			return (built_in_chooser[i].func);
 	}
-	else
-		return (status);  /** returns to hsh.c */
 }
