@@ -6,7 +6,7 @@
  * @value: the value of the key/val pair of the env linked list
  * Return: is void
  */
-void remove_node(env_t **head, char value)
+void delete_env_node(env_t **head, char *value)
 {
 	env_t *current, *to_remove;
 

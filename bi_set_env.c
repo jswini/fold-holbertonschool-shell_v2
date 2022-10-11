@@ -10,8 +10,8 @@
 
 char *bi_set_env(env_t *head, char *key, char *value)
 {
-	int i;
-	int len;
+	/*int i;
+	int len;*/
 	env_t *current;
 
 	if (head == NULL)

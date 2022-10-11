@@ -38,6 +38,17 @@ typedef struct environment_s
 	struct environment_s *prev;
 } env_t;
 
+/**
+ * struct builtin_s - function pointer design struct
+ * @builtin_name: name of builtin to check
+ * @func: function prototype structure for builtins
+ */
+typedef struct builtin_s
+{
+	char *builtin_name;
+	int (*func)(env_t *builtin, char *var1, char *var2);
+} builtin_t;
+
 /*string parse functions*/
 int _strlen(char *s);
 char *_strcat(char *s1, char *s2);
@@ -50,17 +61,20 @@ char *_strndup(const char *str, size_t size);
 char *get_key(char *str);
 char *get_value(char *str);
 env_t *add_node_end_env_t(env_t **head, char *env_line);
-void build_env_array(env_t *head);
+char **build_env_array(env_t *head);
+void delete_env_node(env_t **head, char *value);
 
 /*built in functions*/
-char *bi_exit(env_t *head);
-char *bi_chdir(env_t *head, char *value);
-char *bi_set_env(env_t *head, char *key, char *value);
-char *bi_unset_env(env_t *head, char *key);
+char *bi_exit(char *var1, char *var2);
+char *bi_chdir(char *var1, char *var2);
+char *bi_set_env(char *key, char *value);
+char *bi_unset_env(char *var1, char *var2);
+char *get_pwd(env_t *head);
+void free_env_list(env_t **head);
 void print_env(char **list, int oi);
 
 /*separator/operator functions*/
-char check_built_ins(char *line, path_t *path_head, env_t *head);
+int (*check_built_ins(char *line))(path_t *path_head, env_t *head);
 char **tokenizer(char *buffer);
 char *parse_args(char **tokenized, path_t *path_head, env_t *head);
 

@@ -2,13 +2,19 @@
 
 /**
  * bi_exit - exits the shell
- * @head: the head of the env list
+ * @builtin: the head of the env list
+ * @var1: void
+ * @var2: void
  * Return: Success on success
  */
 
-char *bi_exit(env_t *head)
+char *bi_exit(env_t *builtin, char *var1, char *var2)
 {
-	free_list(*head);
+	(void)(var1);
+	(void)(var2);
+	env_t *head = builtin;
+
+	free_env_list(&head);
 	exit(EXIT_SUCCESS);
 
 	return ("Success");

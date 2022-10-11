@@ -12,9 +12,10 @@ char *find_command(char **tokenized, env_t *head)
 	char **output_list;
 	char *path, *tok;
 	path_t *path_head;
+	int oi = _strlen(output_list);
 
-	build_array(*head); /* mallocs env array */
-	fill_array(*head); /* populates env array */
+	output_list = build_array(*head); /* mallocs env array */
+	output_list = fill_array(*head); /* populates env array */
 	path = find_path(*output_list);
 
 	/* makes PATH a linked list */
@@ -29,8 +30,13 @@ char *find_command(char **tokenized, env_t *head)
 	{
 		return (status);
 	} /* checks for args, operators, separators */
+	else if (_strcmp(_atoi(status), "3"))
+	{
+		print_env(output_list, oi);
+		return ("printed");
+	}
 	else
-
+		return (status);
 	/*
 	 *separate into chunks based on operator/separator
 	 *order chunks into processing order
