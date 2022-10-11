@@ -8,13 +8,11 @@
  * Return: success or failure
  */
 
-char *bi_unset_env(env_t *head, char *key, char *var2)
+char *bi_unset_env(char *line, env_t *head)
 {
-	/* int i;
-	int len; */
 	env_t *current;
-	(void)(var2);
-
+	char *key = line;
+	
 	if (head == NULL)
 		return (NULL);
 

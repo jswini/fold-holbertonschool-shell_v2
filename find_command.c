@@ -12,10 +12,11 @@ char *find_command(char **tokenized, env_t *head)
 	char **output_list;
 	char *path, *tok;
 	path_t *path_head;
-	int oi = _strlen(output_list);
+	int oi;
 
-	output_list = build_array(*head); /* mallocs env array */
+	output_list = build_env_array(*head); /* mallocs env array */
 	output_list = fill_array(*head); /* populates env array */
+	oi = _strlen(output_list);
 	path = find_path(*output_list);
 
 	/* makes PATH a linked list */

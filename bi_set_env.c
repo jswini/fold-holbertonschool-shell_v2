@@ -8,11 +8,10 @@
  * Return: char*
  */
 
-char *bi_set_env(env_t *head, char *key, char *value)
+char *bi_set_env(char *line, char *value, env_t *head)
 {
-	/*int i;
-	int len;*/
 	env_t *current;
+	
 
 	if (head == NULL)
 		return (NULL);
@@ -20,11 +19,11 @@ char *bi_set_env(env_t *head, char *key, char *value)
 	current = head;
 	while (current != NULL)
 	{
-		if (_strcmp(current->key, key))
+		if (_strcmp(current->key, line))
 			current->value = value;
 		else
 		{
-			current->key = key;
+			current->key = line;
 			current->value = value;
 		}
 		current = current->next;

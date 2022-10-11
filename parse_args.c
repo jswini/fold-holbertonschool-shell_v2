@@ -11,15 +11,15 @@
 char *parse_args(char **tokenized, path_t *path_head, env_t *head)
 {
 	int i;
-	char *line;
 	int line_len;
 	char *status;
+	char *tok;
 
-	line_len = _strlen(line);
-	if (line[line_len] + 1 == '\n')
+	line_len = _strlen(tokenized);
+	if (tokenized[line_len] + 1 == '\n')
 	{
-		status = check_built_ins(line, path_head, head);
+		status = check_built_ins(tokenized, path_head, head);
 		return (status);
 	}
-	return (line);
+	return (tokenized);
 }
