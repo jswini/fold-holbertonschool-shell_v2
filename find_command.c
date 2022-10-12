@@ -9,26 +9,24 @@
 char *find_command(char **tokenized, env_t *head)
 {
 	int i;
-	char *status;
-	char **output_list;
-	char *path, *tok;
+	char *status, *path, *tok;
+	char **output_list, **command;
 	path_t *path_head;
 	int oi;
 
-	output_list = build_env_array(head); /* mallocs env array */
+	output_list = build_env_array(head);			 /* mallocs env array */
 	output_list = fill_env_array(head, output_list); /* populates env array */
 	oi = _strlen(*output_list);
 	path = find_path(output_list);
 
-	/* makes PATH a linked list */
-	tok = strtok(path, ":");
-	for (i = 0 ; tok != NULL ; i++)
+	tok = strtok(path, ":"); /* makes PATH a linked list */
+	for (i = 0; tok != NULL; i++)
 	{
 		path_llist(&path_head, tok);
 		tok = strtok(NULL, ":");
 	}
-
-	if (_strcmp(parse_args(tokenized, path_head, head), "success"))
+	status = parse_args(tokenized, path_head, head);
+	if (_strcmp(status, "success"))
 	{
 		return (status);
 	} /* checks for args, operators, separators */
@@ -38,14 +36,9 @@ char *find_command(char **tokenized, env_t *head)
 		return ("printed");
 	}
 	else
-		{
-	/*
-	 *separate into chunks based on operator/separator
-	 *order chunks into processing order
-	 *create pipes and dup2s as needed
-	 *send each command/pipe to execute
-	*/
-	status = execute_command(); /* fork, execve, wait, return here */
-	return (status); /* returns to check builtins */
+	{
+		command = create_command(tokenized[0], path_head);
+		status = execute_command(command, status); /* fork, execve, wait, return here */
+		return (status);						   /* returns to check builtins */
 	}
 }

@@ -33,11 +33,9 @@ char *check_built_ins(char **tokenized, path_t *path, env_t *head)
 			bi_unset_env((tokenized[i + 1]), head);
 			return ("var deleted");
 		}
-		else
+		else if (_strcmp((tokenized[i]), "env"))
 		{
-/*
-			execute_command stack
-*/
+			return ("3");
 		}
 	}
 	return ("Not a built in");
