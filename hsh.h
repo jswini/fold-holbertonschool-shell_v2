@@ -52,7 +52,10 @@ char *get_key(char *str);
 char *get_value(char *str);
 env_t *add_node_end_env_t(env_t **head, char *env_line);
 char **build_env_array(env_t *head);
+char **fill_env_array(env_t *head, char **outputList);
 void delete_env_node(env_t **head, char *value);
+char *find_path(char **output_list);
+path_t *path_llist(path_t **head, char *path);
 
 /*built in functions*/
 char *bi_exit(char **line, path_t *path, env_t *head);
