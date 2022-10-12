@@ -8,16 +8,17 @@
 
 char *find_command(char **tokenized, env_t *head)
 {
-	int status, i;
+	int i;
+	char *status;
 	char **output_list;
 	char *path, *tok;
 	path_t *path_head;
 	int oi;
 
-	output_list = build_env_array(*head); /* mallocs env array */
-	output_list = fill_array(*head); /* populates env array */
-	oi = _strlen(output_list);
-	path = find_path(*output_list);
+	output_list = build_env_array(head); /* mallocs env array */
+	output_list = fill_env_array(head, output_list); /* populates env array */
+	oi = _strlen(*output_list);
+	path = find_path(output_list);
 
 	/* makes PATH a linked list */
 	tok = strtok(path, ":");
@@ -27,17 +28,17 @@ char *find_command(char **tokenized, env_t *head)
 		tok = strtok(NULL, ":");
 	}
 
-	if (parse_args(tokenized, path_head, head) == "success")
+	if (_strcmp(parse_args(tokenized, path_head, head), "success"))
 	{
 		return (status);
 	} /* checks for args, operators, separators */
-	else if (_strcmp(_atoi(status), "3"))
+	else if (_strcmp(status, "3"))
 	{
 		print_env(output_list, oi);
 		return ("printed");
 	}
 	else
-		return (status);
+		{
 	/*
 	 *separate into chunks based on operator/separator
 	 *order chunks into processing order
@@ -46,4 +47,5 @@ char *find_command(char **tokenized, env_t *head)
 	*/
 	status = execute_command(); /* fork, execve, wait, return here */
 	return (status); /* returns to check builtins */
+	}
 }
