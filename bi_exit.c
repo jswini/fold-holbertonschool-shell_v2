@@ -2,9 +2,9 @@
 
 /**
  * bi_exit - exits the shell
- * @builtin: the head of the env list
- * @var1: void
- * @var2: void
+ * @line: the value of the key val pair
+ * @path: head of the PATH's linked list
+ * @head: head of the env var linked list
  * Return: Success on success
  */
 

@@ -1,5 +1,12 @@
 #include "hsh.h"
 
+/**
+ * execute_command - runs execve on the command name
+ * @cmd: the command to be executed
+ * @status: the status of the shell
+ * Return: the status of the executed command
+ */
+
 char *execute_command(char **cmd, char *status)
 {
 	pid_t check_process;
@@ -22,7 +29,7 @@ char *execute_command(char **cmd, char *status)
 	else
 	{
 		wait(&status);
-		//status = WEXITSTATUS(status);
+		/* status = WEXITSTATUS(status);*/
 		return (status);
 	}
 	return (status);

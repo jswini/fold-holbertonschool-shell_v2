@@ -1,7 +1,7 @@
 #include "hsh.h"
 
 /**
- * free_env_list - frees the env linked list
+ * free_path_list - frees the env linked list
  * @head: head of the env linked list
  * Return: is void
  */

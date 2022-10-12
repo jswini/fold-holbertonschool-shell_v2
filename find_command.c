@@ -37,8 +37,10 @@ char *find_command(char **tokenized, env_t *head)
 	}
 	else
 	{
-		command = create_command(tokenized[0], path_head);
-		status = execute_command(command, status); /* fork, execve, wait, return here */
-		return (status);						   /* returns to check builtins */
+		command = create_command(tokenized, path_head);
+		/* fork, execve, wait, return here */
+		status = execute_command(command, status);
+		/* returns to check builtins */
+		return (status);
 	}
 }

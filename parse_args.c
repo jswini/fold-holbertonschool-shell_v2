@@ -10,10 +10,10 @@
 
 char *parse_args(char **tokenized, path_t *path_head, env_t *head)
 {
-	//int i;
+	/* int i; */
 	int line_len;
 	char *status;
-	//char *tok;
+	/* char *tok; */
 
 	line_len = _strlen(*tokenized);
 	if (_strcmp(tokenized[line_len + 1], NULL))
