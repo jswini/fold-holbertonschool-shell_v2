@@ -2,9 +2,8 @@
 
 /**
  * bi_unset_env - unsets the env variable
- * @head: head of the env list
- * @key: key of the key / val pair of the env list
- * @var2: void
+ * @line: key value
+ * @head: head of the env var linked list
  * Return: success or failure
  */
 
@@ -12,7 +11,7 @@ char *bi_unset_env(char *line, env_t *head)
 {
 	env_t *current;
 	char *key = line;
-	
+
 	if (head == NULL)
 		return (NULL);
 

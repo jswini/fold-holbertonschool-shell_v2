@@ -2,9 +2,9 @@
 
 /**
  * bi_chdir - changes the sctive directory
- * @head: head of the environment list
- * @value: the new PWD
- * @var2: void
+ * @line: the value of the key val pair
+ * @path: the new PWD
+ * @head: head of the env var linked list
  * Return: Success on success failure on fail
  */
 char *bi_chdir(char *line, path_t *path, env_t *head)
@@ -17,7 +17,7 @@ char *bi_chdir(char *line, path_t *path, env_t *head)
 	if (lstat(value, &sb) == -1)
 		return ("failure");
 
-	bi_set_env(head, "OLDPWD", oldpwd_val);
-	bi_set_env(head, "PWD", value);
+	bi_set_env("OLDPWD", oldpwd_val, head);
+	bi_set_env("PWD", value, head);
 	return ("Success");
 }
